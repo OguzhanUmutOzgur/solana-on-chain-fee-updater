@@ -1,4 +1,4 @@
-# Solana | On-chain NFT Royalty Fee updater
+# Solana | On-chain NFT royalty fee updater
 
 This script allows you to update royalty fees of a given list from mint addresses. It only updates the values stored in on-chain data. 
 
@@ -22,16 +22,16 @@ npm install
 ```
 
 ## Usage
-- Copy and paste the list of tokens in **`data/hashlist.json`** in form of [JSON Array](https://www.javatpoint.com/json-array) or directly replace it with your JSON file (with the same name).
+- Copy and paste the list of NFT/token addresses in **`data/hashlist.json`** in form of [JSON Array](https://www.javatpoint.com/json-array) or directly replace it with your JSON file (with the same name).
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example Command (Updates fees to 8.88%)
 ```
 ts-node index.ts -u https://api.devnet.solana.com -k keypair.json -fee 888
 ```
 ## Arguments
-These are expected arguments and the script can not be successfully executed without them.
+These are expected arguments and the script can not be executed successfully without them.
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keypair
-The script expects the keypair file which is the Update Authority of all NFTs of the given list. You can safely place your keypair file inside the folder and use simply `ts-node index.ts -k keypair.json`
+The script expects the keypair file which is the Update Authority of all NFTs of the given list. You can safely place your keypair file inside the folder and simply use `ts-node index.ts -k keypair.json`
 
 ```
 ts-node index.ts -k <path to keypair>
@@ -45,7 +45,7 @@ ts-node index.ts -fee <new fee>
 ```
 
 ## Options
-These are options you can pass on. **I highly recommend using a custom RPC** as public RPCs are most likely to get rate limited before all NFTs are updated.
+These are optional arguments that you may need to use depending on your case. **I highly recommend using a custom RPC** as public RPCs are most likely to get rate limited before all NFTs are updated.
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RPC URL
 This is a heavy task and makes many requests to Solana RPCs. I highly recommend using a **CUSTOM RPC**. The script will use public mainnet RPC by default. 
@@ -56,7 +56,7 @@ ts-node index.ts -u <RPC>
 ```
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Synchronous
-By default, the script will make simultaneous requests to update and some transactions may fail. In this case, the script will retry failed NFTs after 5 seconds. The script is expected to work just fine but it could trigger unexpected cases. In any case, it won't harm the Metadata.
+By default, the script will make simultaneous requests to update therefore some transactions may fail. In this case, the script will retry failed NFTs after 5 seconds. The script is expected to work just fine but it could trigger unexpected cases. In any case, it won't harm the Metadata.
 
 You can use `-s` to make the calls sequentially. It would take much longer than the default way but it is safer in non-immediat cases.
 
