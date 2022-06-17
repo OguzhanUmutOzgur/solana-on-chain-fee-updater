@@ -74,9 +74,10 @@ hashlist.forEach((hash) => {
 
         //to call callback function when required new data created
         if (currentCount == hashlist.length) {
-            if(skippedCount == hashlist.length){
+            if(hashlist.length == 0){
                 deleteData();
                 console.log(`\n\tAll NFTs are already updated!\n`);
+                process.exit(1);
             }
 
             if (skippedCount > 0) {
@@ -92,7 +93,7 @@ hashlist.forEach((hash) => {
             \n\tStarting to update...`);
             isSync ? 
                 updateRoyaltiesSync(hashlist, keypairPath, rpcURL) : 
-                updateRoyalties(hashlist, keypairPath, rpcURL);
+                await updateRoyalties(hashlist, keypairPath, rpcURL);
         }
     })();
 });

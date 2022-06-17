@@ -113,16 +113,9 @@ export async function updateRoyalties(hashlist: Array<string>, keypairPath: stri
                 
                 if(tryCount == totalCount){
                     deleteData();
-                    console.log(`\n\n\tTotal: ${totalCount}\n\tSuccess: ${totalCount - hashlist.length}\n\tFailure: ${hashlist.length}`);
-                    if(hashlist.length != 0){
-                        console.log(`\n\tRetrying for ${hashlist.length} failures. Retrying in 5 seconds...`);
-                        new Promise((resolve) => setTimeout(resolve, 5000)).then(() => { });
-                        await updateRoyalties(hashlist, keypairPath, rpcURL);
-                    }
+                    console.log(`\n\n\tTotal: ${totalCount}\n\tSuccess: ${totalCount - hashlist.length}\n\tFailure: ${hashlist.length}\n\tPlease wait at least 3 seconds and re-execute the same command if there are any failures.`);
                 }
             });
-
-            new Promise((resolve) => setTimeout(resolve, 300)).then(() => { });
         }
     }
 }
