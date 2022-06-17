@@ -26,7 +26,7 @@ npm install
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example Command (Updates fees to 8.88%)
 ```
-ts-node index.ts -u https://api.devnet.solana.com -k keypair.json -fee 888
+ts-node index.ts -s -u https://api.devnet.solana.com -k keypair.json -fee 888
 ```
 ## Arguments
 These are expected arguments and the script can not be executed successfully without them.
