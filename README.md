@@ -2,7 +2,7 @@
 
 This script allows you to update royalty fees of a given list from mint addresses. It only updates the values stored in on-chain data. 
 
-Use it at your own risk. 
+Use it at your own risk and read Options section carefully to avoid unexpected problems.
 
 Tested on Devnet/Mainnet using NFTs that follow Metaplex NFT standards.
 
@@ -56,7 +56,7 @@ ts-node index.ts -u <RPC>
 ```
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Synchronous
-By default, the script will make simultaneous requests to update therefore some transactions may fail. In this case, you may need to re-execute the script with exactly same command until you get `All NFTs are already updated!` as console output. 
+By default, the script will make simultaneous requests to update therefore some transactions may fail. In this case, you can re-execute the script with exactly same command until you get `All NFTs are already updated!` as console output (Let it cooldown at least for few seconds). 
 
 You can use `-s` to make the calls sequentially. It would take much longer than the default way but it is safer in non-immediat cases.
 
