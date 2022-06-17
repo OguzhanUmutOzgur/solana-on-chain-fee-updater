@@ -56,7 +56,7 @@ ts-node index.ts -u <RPC>
 ```
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Synchronous
-By default, the script will make simultaneous requests to update therefore some transactions may fail. In this case, the script will retry failed NFTs after 5 seconds. The script is expected to work just fine but it could trigger unexpected cases. In any case, it won't harm the Metadata.
+By default, the script will make simultaneous requests to update therefore some transactions may fail. In this case, you may need to re-execute the script with exactly same command until you get `All NFTs are already updated!` as console output. 
 
 You can use `-s` to make the calls sequentially. It would take much longer than the default way but it is safer in non-immediat cases.
 
