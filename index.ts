@@ -74,11 +74,17 @@ hashlist.forEach((hash) => {
 
         //to call callback function when required new data created
         if (currentCount == hashlist.length) {
+            if(skippedCount == hashlist.length){
+                deleteData();
+                console.log(`\n\tAll NFTs are already updated!\n`);
+            }
+
             if (skippedCount > 0) {
                 console.log(
                     `\tSkipped ${skippedCount} mints because they were already updated.`
                 );
             }
+
             console.log(`
             \tFound ${hashlist.length} addresses.
             \tExpected fee cost is ${calculateApproxFeeCost(hashlist)} SOL.

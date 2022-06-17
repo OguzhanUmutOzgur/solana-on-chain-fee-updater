@@ -99,14 +99,16 @@ export async function updateRoyalties(hashlist: Array<string>, keypairPath: stri
         } else {
             const metabossCommand = `metaboss update data --keypair ${keypairPath} --account ${hash} --new-data-file ${filePath} -r ${rpcURL}`;
 
-            await exec(metabossCommand, (error, stdout, stderr) => {
+            await exec(metabossCommand, async (error, stdout, stderr) => {
                 tryCount++;
                 if (error) {
-                    console.error(`exec error: ${error}`);
+                    console.error(`${error}`);
                 } else if (stderr.length == 0) {
                     hashlist = hashlist.filter(function (listHash) {
                         return listHash !== hash;
                     });
+                } else {
+                    console.log(`STDERR: ${stderr}`);
                 }
                 
                 if(tryCount == totalCount){
@@ -115,12 +117,12 @@ export async function updateRoyalties(hashlist: Array<string>, keypairPath: stri
                     if(hashlist.length != 0){
                         console.log(`\n\tRetrying for ${hashlist.length} failures. Retrying in 5 seconds...`);
                         new Promise((resolve) => setTimeout(resolve, 5000)).then(() => { });
-                        updateRoyalties(hashlist, keypairPath, rpcURL);
+                        await updateRoyalties(hashlist, keypairPath, rpcURL);
                     }
                 }
             });
 
-            new Promise((resolve) => setTimeout(resolve, 222)).then(() => { });
+            new Promise((resolve) => setTimeout(resolve, 300)).then(() => { });
         }
     }
 }
